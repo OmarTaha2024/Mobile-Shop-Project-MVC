@@ -6,7 +6,7 @@ A modern web application for managing and browsing mobile phones, built using AS
 
 ---
 ## Demo
-[https://github.com/OmarTaha2024/ATM-Banking-System/tree/main/DemoforApp](https://github.com/OmarTaha2024/Mobile-Shop-Project-MVC/tree/main/Project%20Demo)
+(https://github.com/OmarTaha2024/Mobile-Shop-Project-MVC/tree/main/Project%20Demo)
 
 
 ## 🔍 Project Overview
