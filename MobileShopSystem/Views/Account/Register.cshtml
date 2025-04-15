@@ -1,0 +1,57 @@
+﻿@using MobileShopSystem.ViewModels
+@model RegisterViewModel
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="card shadow-lg p-4" style="width: 100%; max-width: 500px;">
+        <h3 class="text-center mb-4 text-success">Create Your Account</h3>
+
+        <form asp-action="Register" method="post">
+            <div asp-validation-summary="All" class="text-danger text-center mb-3"></div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="FirstName" class="form-label fw-bold"></label>
+                    <input asp-for="FirstName" class="form-control form-control-lg" placeholder="First Name" />
+                    <span asp-validation-for="FirstName" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="LastName" class="form-label fw-bold"></label>
+                    <input asp-for="LastName" class="form-control form-control-lg" placeholder="Last Name" />
+                    <span asp-validation-for="LastName" class="text-danger small"></span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Address" class="form-label fw-bold"></label>
+                <input asp-for="Address" class="form-control form-control-lg" placeholder="Your Address" />
+                <span asp-validation-for="Address" class="text-danger small"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label fw-bold"></label>
+                <input asp-for="Email" class="form-control form-control-lg" placeholder="you@example.com" />
+                <span asp-validation-for="Email" class="text-danger small"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label fw-bold"></label>
+                <input asp-for="Password" class="form-control form-control-lg" placeholder="••••••••" />
+                <span asp-validation-for="Password" class="text-danger small"></span>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="ConfirmPassword" class="form-label fw-bold"></label>
+                <input asp-for="ConfirmPassword" class="form-control form-control-lg" placeholder="Repeat Password" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100 btn-lg">Register</button>
+        </form>
+
+        <div class="text-center mt-3">
+            <span class="text-muted">Already have an account?</span>
+            <a asp-controller="Account" asp-action="Login" class="text-decoration-none">Login</a>
+        </div>
+    </div>
+</div>

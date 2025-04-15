@@ -1,0 +1,22 @@
+﻿@using MobileShopSystem.ViewModels
+@model OrderConfirmationViewModel
+
+@{
+    ViewData["Title"] = "Order Confirmation";
+}
+
+<div class="text-center mt-5">
+    <h2 class="text-success">✅ Thank you for your order!</h2>
+
+    <p class="mt-4">Your order has been placed successfully.</p>
+
+    <div class="mt-3">
+        <h4>🧾 Order Number: <strong>@Model.OrderId</strong></h4>
+        <h5>Total Amount: <span class="text-primary">@Model.TotalAmount.ToString("C")</span></h5>
+    </div>
+
+    <div class="mt-5">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary">🏠 Back to Home</a>
+        <a asp-controller="Mobiles" asp-action="Index" class="btn btn-outline-secondary ms-2">📱 Continue Shopping</a>
+    </div>
+</div>

@@ -1,0 +1,111 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MobileShopSystem</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MobileShopSystem.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body>
+
+    <header>
+
+        <div class="container-fluid bg-dark py-2">
+            <div class="d-flex justify-content-between align-items-center">
+                <a class="navbar-brand text-white fw-bold" asp-area="" asp-controller="Mobiles" asp-action="Index">
+                    MobileShopSystem
+                </a>
+
+                @if (!SignInManager.IsSignedIn(User))
+                {
+                    <ul class="navbar-nav flex-row align-items-center mb-0">
+                        <li class="nav-item me-3">
+                            <a class="btn btn-outline-light btn-sm rounded-pill px-3" asp-controller="Account" asp-action="Login">
+                                Login
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-outline-success btn-sm rounded-pill px-3" asp-controller="Account" asp-action="Register">
+                                Register
+                            </a>
+                        </li>
+                    </ul>
+                }
+            </div>
+        </div>
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <div class="container-fluid bg-dark py-2 px-4 d-flex justify-content-end align-items-center">
+
+                <ul class="navbar-nav flex-row align-items-center mb-0">
+                    @if (User.IsInRole("User"))
+                    {
+                        <li class="nav-item me-3">
+                            <a class="btn btn-outline-warning btn-sm rounded-pill position-relative px-3"
+                               asp-controller="ShoppingCarts" asp-action="Index">
+                                <i class="fas fa-shopping-cart me-1"></i> Cart
+                                <span class="badge rounded-pill bg-light text-dark position-absolute translate-middle"
+                                      style="top: -8px; left: 90%; font-size: 0.65em;">
+                                    @ViewBag.CartCount
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item me-3">
+                            <a class="btn btn-outline-primary btn-sm rounded-pill px-3"
+                               asp-controller="Orders" asp-action="UserOrders">
+                                <i class="fas fa-box me-1"></i> Orders
+                            </a>
+                        </li>
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item me-3">
+                            <a class="btn btn-outline-primary btn-sm rounded-pill px-3"
+                               asp-controller="Orders" asp-action="Index">
+                                <i class="fas fa-box me-1"></i> Orders
+                            </a>
+                        </li>
+                        <li class="nav-item me-3">
+                            <a class="btn btn-outline-primary btn-sm rounded-pill px-3"
+                               asp-controller="Dashboard" asp-action="Index">
+                                <i class="fas fa-box me-1"></i> Dashboard
+                            </a>
+                        </li>
+                    }
+
+                    <!-- Logout -->
+                    <li class="nav-item">
+                        <form asp-controller="Account" asp-action="Logout" method="post" class="m-0">
+                            <button type="submit" class="btn btn-outline-danger btn-sm rounded-pill px-3">
+                                Logout
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        }
+    </header>
+
+
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2025 - MobileShopSystem - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

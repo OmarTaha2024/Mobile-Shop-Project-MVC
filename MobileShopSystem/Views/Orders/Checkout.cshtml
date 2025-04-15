@@ -1,0 +1,28 @@
+﻿@model OrderViewModel
+
+<form asp-action="Checkout" method="post">
+    <div class="form-group">
+        <label>Pay Way</label>
+        <select asp-for="PaymentMethod" class="form-control">
+            <option value="Cash">Cash on delivery</option>
+            <option value="Visa">Visa</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Address</label>
+        <input asp-for="ShippingAddress" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>City</label>
+        <input asp-for="ShippingCity" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Country</label>
+        <input asp-for="ShippingCountry" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-danger">Confirm</button>
+</form>

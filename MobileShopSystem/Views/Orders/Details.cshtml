@@ -1,0 +1,132 @@
+﻿@model Order
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="row">
+        @if (User.IsInRole("Admin"))
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Customer)
+            </dt>
+            <dd class="col-sm-10">
+                <td>
+                    @(@Model.Customer.FirstName + " " + @Model.Customer.LastName)
+                </td>
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.OrderDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.OrderDate)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TotalAmount)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TotalAmount)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PaymentMethod)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PaymentMethod)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PaymentStatus)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PaymentStatus)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ShippingAddress)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ShippingAddress)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ShippingCity)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ShippingCity)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ShippingCountry)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ShippingCountry)
+            </dd>
+        }
+        else if (User.IsInRole("User"))
+        {
+              <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OrderDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TotalAmount)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TotalAmount)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PaymentMethod)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PaymentMethod)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PaymentStatus)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PaymentStatus)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ShippingAddress)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ShippingAddress)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ShippingCity)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ShippingCity)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ShippingCountry)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ShippingCountry)
+        </dd>
+        }
+    </dl>
+
+</div>
+<div>
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model?.OrderId">Edit</a>
+    }
+    <a asp-controller="Mobiles" asp-action="Index">Back to List</a>
+</div>
